@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Your Craft Shopping App</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <style>
+        body {
+            background-color: #f8f9fa; /* Light Gray */
+            margin: 0;
+            padding: 0;
+            font-family: 'Heebo', sans-serif;
+        }
+
+        nav {
+            background-color: #fe5d37; /* Secondary Gray */
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-right: 15px;
+            font-weight: bold;
+        }
+
+        .card {
+            box-shadow: 0 4px 8px 0 #fe5d37;
+            width: 80%;
+            margin: auto;
+            display: flex;
+            font-family: 'Heebo', sans-serif;
+            background-color: #6c757d; /* Secondary Gray */
+        }
+
+        .image {
+            width: 50%;
+        }
+
+        .details {
+            flex: 1;
+            text-align: left;
+            padding: 20px;
+            background-color: #f8f9fa; /* Light Gray */
+        }
+
+        .price {
+            color: #6c757d; /* Secondary Gray */
+            font-size: 22px;
+        }
+
+        .card-buttons {
+            display: flex;
+            justify-content: space-between;
+            margin-top: 20px;
+        }
+
+        .card button {
+            border: none;
+            outline: 0;
+            padding: 12px;
+            color: white;
+            background-color: #fe5d37; /* Primary Blue */
+            text-align: center;
+            cursor: pointer;
+            width: 48%;
+            font-size: 18px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .card button:hover {
+            opacity: 0.7;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            background-color: #fe5d37; /* Secondary Gray */
+            padding: 10px;
+            margin-top: 0;
+            color: white;
+        }
+    </style>
+    
+</head>
+
+<body>
+
+    <!-- <nav>
+        <a href="/index">Home</a>
+        <a href="/craftcart/">CRAFT CART</a> -->
+        <!-- Add more navigation links as needed -->
+    <!-- </nav> -->
+
+    <h2>CRAFT CART</h2>
+
+    <div class="container">
+        {% for i in a %}
+        <div class="card">
+            <div class="image">
+                <img src="/media/{{i.image}}" alt="" style="width: 100%">
+            </div>
+            <div class="details">
+                <h1>{{i.item_name}}</h1>
+                <p class="price">${{i.price}}</p>
+                <p>{{i.description}}</p>
+                <p>{{i.category}}Kg</p>
+                <p>{{i.username}}</p>
+                <!-- <p>{{i.size}}</p> -->
+                <div class="card-buttons">
+                    <button  id="createButton"><a href="/delete2/{{i.id}}" style="color: white; text-decoration: none;">Delete</a></button>
+                    <button><a href="/payment1/" style="color: white; text-decoration: none;">Buy</a></button>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+    <script>
+        // JavaScript code to handle button click event
+        document.getElementById("createButton").addEventListener("click", function() {
+            alert("Deleted !");
+        });
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,76 @@
+<!-- video_list.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Video List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f4;
+        }
+
+        h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #fff;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        a {
+            color: #3498db;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        a.edit, a.delete {
+            margin-left: 10px;
+        }
+
+        a.add-video {
+            display: block;
+            margin-top: 20px;
+            padding: 10px;
+            background-color: #3498db;
+            color: #fff;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+
+        a.add-video:hover {
+            background-color: #2980b9;
+        }
+    </style>
+</head>
+<body>
+    <h2>Video List</h2>
+    <ul>
+        {% for video in videos %}
+            <li>
+                {{ video.title }} - {{ video.category }} - 
+                <!-- <a href="{{ video.video_link }}" target="_blank">Watch Link</a> -  -->
+                <a href="{% url 'edit_video' video.pk %}" class="edit">Edit</a> - 
+                <a href="{% url 'delete_video' video.pk %}" class="delete">Delete</a> - 
+                <!-- <a href="{{ video.video_file }}" class="watch-video">Watch Video</a> -->
+            </li>
+        {% endfor %}
+    </ul>
+    <a href="{% url 'add_video' %}" class="add-video">Add Video</a>
+</body>
+</html>

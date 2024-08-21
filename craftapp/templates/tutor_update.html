@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f1ee;
+        }
+        h2 {
+            text-align: center;
+            color: #08010c;
+            margin-top: 30px;
+        }
+        form {
+            width: 60%;
+            margin: 0 auto;
+            padding: 40px;
+            background-color: #fe5d37;
+            border-radius: 8px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+        }
+        input[type="text"] {
+            width: calc(100% - 18px);
+            padding: 12px;
+            margin-bottom: 20px;
+            border-radius: 6px;
+            border: 1px solid #300226;
+            box-sizing: border-box;
+            transition: border-color 0.3s ease-in-out;
+        }
+        input[type="text"]:focus {
+            outline: none;
+            border-color: #ebc414;
+            box-shadow: 0 0 8px rgba(242, 250, 12, 0.901);
+        }
+        .attractive-button {
+  background-color: #468ae8; /* Blue background */
+  border: none;
+  color: white; /* White text */
+  padding: 10px 20px; /* Padding */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  border-radius: 5px; /* Rounded corners */
+  transition-duration: 0.4s; /* Smooth transition */
+  cursor: pointer;
+  box-shadow: 0 2px 4px rgba(165, 62, 62, 0.1); /* Shadow effect */
+}
+
+.attractive-button:hover {
+  background-color: #4225d4; /* Darker blue on hover */
+  color: rgb(235, 236, 243); /* White text on hover */
+}
+    </style>
+    <title>Document</title>
+</head>
+<body>
+    <h2>UPDATE TUTOR DATA</h2>
+    <form name="form1" action="/updatetutorprofile/" method="post">
+        {% csrf_token %}
+        ID:<input type="text" name="id" value="{{id}}" readonly><br>
+        NAME:<input type="text" name="name" value="{{name}}"><br>
+        USER NAME:<input type="text" name="username" value="{{username}}" readonly><br>
+        E MAIL:<input type="text" name="email" value="{{email}}" readonly><br>
+        PHONE NUMBER<input type="text" name="number" value="{{number}}">
+        ADDRESS:<input type="text" name="address" value="{{address}}">
+        <input type="submit" class="attractive-button" value="UPDATE" id="createButton">
+    </form>
+    <script>
+        // JavaScript code to handle button click event
+        document.getElementById("createButton").addEventListener("click", function() {
+            alert("Updated !");
+        });
+    </script>
+</body>
+</html>

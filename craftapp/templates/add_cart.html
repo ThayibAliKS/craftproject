@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5; /* Background color changed to a lighter shade */
+      margin: 0;
+      padding: 0;
+    }
+
+    h2 {
+      text-align: center;
+      background-color: #fe5d37; /* Similar to the previous color */
+      padding: 10px;
+      margin-top: 0;
+      color: #fff; /* Text color set to white */
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .card {
+      width: 600px;
+      background-color: #fff;
+      border: 1px solid #ddd;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      display: flex;
+    }
+
+    .card img {
+      width: 50%;
+      height: auto;
+    }
+
+    .details {
+      flex: 1;
+      padding-left: 20px;
+      text-align: left;
+    }
+
+    input[type="text"],
+    input[type="hidden"] {
+      width: 100%;
+      padding: 8px;
+      margin-bottom: 10px;
+      box-sizing: border-box;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+
+    input[type="submit"] {
+      background-color: #fe5d37; /* Similar to the previous color */
+      color: #fff;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: #fa9179; /* Darker shade on hover */
+    }
+  </style>
+</head>
+<body>
+
+  <h2>Cart Page</h2>
+
+  <form method="post" action="/addcart/" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="container">
+      <div class="card">
+        <img src="/media/{{image}}" alt="">
+        <input value="{{image}}" type="hidden" name="image" readonly>
+        <div class="details">
+          Product Name:<input value="{{item_name}}" name="item_name" type="text" readonly>
+          Product Price:<input type="text" value="{{price}}" name="price" readonly><br>  
+          Description:<input value="{{description}}" type="text" name="description" readonly><br>
+          Quantity:<input value="{{quantity}}" type="number" name="quantity"><br>
+          UserName:<input value="{{username}}" type="text" name="username" readonly><br> 
+          <input type="submit" value="submit" name="submit" id="createButton">
+        </div>
+      </div>
+    </div>
+  </form>
+
+  <script>
+    // JavaScript code to handle button click event
+    document.getElementById("createButton").addEventListener("click", function() {
+        alert("Item added !");
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Cart</title>
+  <style>
+    body {
+      background-color: #f1f5f8;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav {
+      background-color: #3498db; /* Peter River */
+      padding: 10px;
+      text-align: center;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-right: 15px;
+      font-weight: bold;
+    }
+
+    .card {
+      box-shadow: 0 4px 8px 0 #fe5d37;
+      width: 80%;
+      margin: auto;
+      display: flex;
+      font-family: Arial, sans-serif;
+      background-color: #3498db; /* Peter River */
+    }
+
+    .image {
+      width: 50%;
+    }
+
+    .details {
+      flex: 1;
+      text-align: left;
+      padding: 20px;
+      background-color: #f1f5f8; /* Silver Sand */
+    }
+
+    .price {
+      color: #6C7A89; /* Blue Gray */
+      font-size: 22px;
+    }
+
+    .card-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 20px;
+    }
+
+    .card button {
+      border: none;
+      outline: 0;
+      padding: 12px;
+      color: white;
+      background-color: #fe5d37; /* Belize Hole */
+      text-align: center;
+      cursor: pointer;
+      width: 48%; /* Adjust width as needed */
+      font-size: 18px;
+      text-decoration: none; /* Remove link-like underline */
+      display: inline-block; /* Ensure proper block display */
+    }
+
+    .card button:hover {
+      opacity: 0.7;
+    }
+
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      margin-top: 20px;
+    }
+
+    h2 {
+      text-align: center;
+      background-color: #fe5d37; /* Peter River */
+      padding: 10px;
+      margin-top: 0;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+<!-- 
+<nav>
+  <a href="/">Home</a>
+  <a href="/cart/">Accessory Cart</a> -->
+  <!-- Add more navigation links as needed -->
+<!-- </nav> -->
+
+<h2>ACCESSORY  ITEMS</h2>
+
+<div class="container">
+  {% for i in a %}
+    <div class="card">
+      <div class="image">
+        <img src="/media/{{i.image}}" alt="" style="width: 100%">
+      </div>
+      <div class="details">
+        <h1>{{i.item_name}}</h1>
+        <p class="price">${{i.price}}</p>
+        <p>{{i.description}}</p>
+        <p>{{i.category}}Kg</p>
+        <p>{{i.username}}</p> 
+        <!-- <p>{{i.size}}</p>  -->
+        <div class="card-buttons">
+          <button id="createButton"><a href="/delete1/{{i.id}}" style="color: white; text-decoration: none;" >Delete</a></button>
+          <button><a href="/payment/" style="color: white; text-decoration: none;">Buy</a></button>
+        </div>
+      </div>
+    </div>
+  {% endfor %}
+</div>
+<script>
+  // JavaScript code to handle button click event
+  document.getElementById("createButton").addEventListener("click", function() {
+      alert("Deleted !");
+  });
+</script>
+</body>
+</html>

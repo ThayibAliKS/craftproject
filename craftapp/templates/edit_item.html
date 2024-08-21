@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Accerios</title>
+    <style>
+        body {
+            background-color: #f4f4f4;
+            color: #333; /* Text color */
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin: 20px auto;
+            max-width: 600px;
+        }
+
+        h2 {
+            color: #3498db; /* Header color */
+        }
+
+        .form-label {
+            color: #333; /* Label color */
+        }
+
+        .form-control {
+            background-color: #fff; /* Input background color */
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 8px;
+            width: 100%;
+        }
+
+        .form-control-file {
+            padding: 8px;
+            width: 100%;
+        }
+
+        .btn-primary {
+            background-color: #3498db; /* Button background color */
+            color: #fff; /* Button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            background-color: #2980b9; /* Hover state */
+        }
+
+        .btn-secondary {
+            background-color: #95a5a6; /* Secondary button background color */
+            color: #fff; /* Secondary button text color */
+            border: none;
+            padding: 10px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-secondary:hover {
+            background-color: #7f8c8d; /* Hover state */
+        }
+    </style>
+    <!-- Include any additional head content you need -->
+</head>
+<body>
+    <div class="container">
+        <h2>{{ action }} Accerios</h2>
+        <form method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            
+            <div class="mb-3">
+                <label for="item_name" class="form-label">Item Name:</label>
+                <input type="text" id="item_name" name="item_name" class="form-control" value="{{ item.item_name }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="category" class="form-label">Category:</label>
+                <input type="text" id="category" name="category" class="form-control" value="{{ item.category }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="price" class="form-label">Price:</label>
+                <input type="text" id="price" name="price" class="form-control" value="{{ item.price }}">
+            </div>
+
+            <div class="mb-3">
+                <label for="image" class="form-label">Image:</label>
+                <input type="file" id="image" name="image" class="form-control-file">
+            </div>
+
+            <button type="submit" class="btn btn-primary" id="createButton">Save Changes</button>
+        </form>
+
+        <a href="{% url 'seller_manage_items' %}" class="btn btn-secondary mt-3">Back to Manage Items</a>
+    </div>
+    <script>
+        // JavaScript code to handle button click event
+        document.getElementById("createButton").addEventListener("click", function() {
+            alert("Updated!");
+        });
+    </script>
+</body>
+</html>
